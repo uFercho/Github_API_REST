@@ -1,0 +1,21 @@
+.main-container{
+  padding: 20px;
+  width: calc( (3 / 4) * 100vw);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px auto 0 auto;
+  gap: 2rem;
+
+  .card {
+    width: clamp(250px, calc(25% - 4rem), 400px);
+    flex-grow: 1;
+  }
+}
+

@@ -1,0 +1,31 @@
+<main class="main-container">
+  <section>
+    <users-search (search)='onSearch($event)'></users-search>
+  </section>
+  <mat-divider></mat-divider>
+  <section class="card-container">
+    <ng-template #showLoading>
+      <shared-spinner></shared-spinner>
+    </ng-template>
+    <ng-container *ngIf="!users.length && !loading">
+        <p>Intruduce un nombre de usuario valido para iniciar la busqueda.</p>
+    </ng-container>
+    <ng-container *ngIf="!loading; else showLoading">
+      <div *ngFor="let user of users" class="card">
+        <users-results
+          [user]="user"
+        ></users-results>
+      </div>
+    </ng-container>
+  </section>
+  <section *ngIf="users.length && !loading">
+    <mat-paginator #paginator
+                (page)="handlePageEvent($event)"
+                [length]="paginationConfig.length"
+                [pageSize]="paginationConfig.pageSize"
+                [showFirstLastButtons]="paginationConfig.showFirstLastButtons"
+                [pageIndex]="paginationConfig.pageIndex"
+                aria-label="Select page">
+    </mat-paginator>
+  </section>
+</main>

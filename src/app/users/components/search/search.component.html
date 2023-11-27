@@ -1,0 +1,15 @@
+
+<mat-form-field appearance="outline" class="field-control">
+  <mat-label>Nombre de usuario</mat-label>
+  <input matInput
+    type="text"
+    placeholder="Buscar usuario"
+    [formControl]="login"
+    (keyup)="onKeyPress( login.value )"
+  >
+  <mat-icon matSuffix *ngIf="login.dirty; else iconSearch">
+    {{login.valid ? 'sentiment_very_satisfied' : 'sentiment_very_dissatisfied' }}
+  </mat-icon>
+  <ng-template #iconSearch> <mat-icon matSuffix >search</mat-icon> </ng-template>
+  <mat-error *ngIf="login.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>

@@ -1,0 +1,101 @@
+<div class="profile-container">
+  <div class="main-profile">
+    <mat-card class="profile-login-card">
+      <img
+        class="profile-header-image"
+        mat-card-image
+        [src]="userProfile?.avatar_url"
+        [alt]="userProfile?.name"
+      >
+      <mat-card-header>
+        <div class="profile-header-info">
+          <mat-card-title> {{ userProfile?.name }} </mat-card-title>
+          <mat-card-subtitle> @{{ userProfile?.login }} </mat-card-subtitle>
+          <mat-card-subtitle> {{ userProfile?.type }} </mat-card-subtitle>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>
+          <a [href]="userProfile?.html_url" aria-hidden="true" target="_blank">
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="profile-bio-card">
+      <mat-card-header>
+        <mat-card-title> Biografia </mat-card-title>
+        <mat-card-subtitle> {{ userProfile?.bio }} </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngIf="userProfile?.email" class="profile-list-item">
+            <mat-icon matListItemIcon class="profile-list-item-icon">mail</mat-icon>
+            <span matListItemLine> {{ userProfile?.email }} </span>
+          </mat-list-item>
+          <mat-list-item *ngIf="userProfile?.location" class="profile-list-item">
+            <mat-icon matListItemIcon class="profile-list-item-icon">location_on</mat-icon>
+            <span matListItemLine> {{ userProfile?.location }} </span>
+          </mat-list-item>
+          <mat-list-item *ngIf="userProfile?.twitter_username" class="profile-list-item">
+            <mat-icon matListItemIcon class="profile-list-item-icon">raven</mat-icon>
+            <span matListItemLine> {{ userProfile?.twitter_username }} </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="profile-card-inf">
+          <div class="profile-card-inf-item">
+            <div class="profile-card-inf-title"> {{ userProfile?.followers }} </div>
+            <div class="profile-card-inf-txt">Followers</div>
+            <div class="profile-card-inf-icon"><mat-icon>thumb_up</mat-icon></div>
+          </div>
+
+          <div class="profile-card-inf-item">
+            <div class="profile-card-inf-title"> {{ userProfile?.following }} </div>
+            <div class="profile-card-inf-txt">Following</div>
+            <div class="profile-card-inf-icon"><mat-icon>favorite</mat-icon></div>
+          </div>
+
+          <div class="profile-card-inf-item">
+            <div class="profile-card-inf-title"> {{ userProfile?.public_repos }} </div>
+            <div class="profile-card-inf-txt">Repositorios</div>
+            <div class="profile-card-inf-icon"><mat-icon>folder_data</mat-icon></div>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+
+  <mat-divider [vertical]="true"></mat-divider>
+
+  <div class="side-profile">
+    <mat-card class="profile-bio-card">
+      <mat-card-header>
+        <mat-card-title> Información </mat-card-title>
+        <mat-card-subtitle> ID: {{ userProfile?.id }} </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngIf="userProfile?.company" class="profile-list-item">
+            <mat-icon matListItemIcon class="profile-list-item-icon">apartment</mat-icon>
+            <span matListItemLine> {{ userProfile?.company }} </span>
+          </mat-list-item>
+          <mat-list-item *ngIf="userProfile?.blog" class="profile-list-item">
+            <mat-icon matListItemIcon class="profile-list-item-icon">rss_feed</mat-icon>
+            <span matListItemLine> {{ userProfile?.blog }} </span>
+          </mat-list-item>
+          <mat-list-item *ngIf="userProfile?.twitter_username" class="profile-list-item">
+            <mat-icon matListItemIcon class="profile-list-item-icon">raven</mat-icon>
+            <span matListItemLine> {{ userProfile?.twitter_username }} </span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

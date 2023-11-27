@@ -1,0 +1,21 @@
+<div class="our-team">
+  <div class="picture">
+    <img class="img-fluid" [src]="user.avatar_url">
+  </div>
+  <div class="team-content">
+    <h3 class="name"> @{{user.login}} </h3>
+    <h4>Score: {{user.score}} </h4>
+  </div>
+  <ul class="social">
+    <li>
+      <a [routerLink]="['/users', user.login]" aria-hidden="true" matTooltip="App profile">
+        <mat-icon>account_box</mat-icon>
+      </a>
+    </li>
+    <li>
+      <a [href]="user.html_url" aria-hidden="true" target="_blank" matTooltip="GitHub profile">
+        <mat-icon>open_in_new</mat-icon>
+      </a>
+    </li>
+  </ul>
+</div>
