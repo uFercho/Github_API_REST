@@ -1,8 +1,11 @@
 <main class="main-container">
+
   <section>
     <users-search (search)='onSearch($event)'></users-search>
   </section>
+
   <mat-divider></mat-divider>
+
   <section class="card-container">
     <ng-template #showLoading>
       <shared-spinner></shared-spinner>
@@ -18,6 +21,7 @@
       </div>
     </ng-container>
   </section>
+
   <section *ngIf="users.length && !loading">
     <mat-paginator #paginator
                 (page)="handlePageEvent($event)"
@@ -28,4 +32,5 @@
                 aria-label="Select page">
     </mat-paginator>
   </section>
+
 </main>

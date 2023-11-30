@@ -18,6 +18,8 @@ export class SearchComponent implements OnInit {
 
   public login: FormControl;
 
+  public errorMessage: string = '';
+
   constructor(
   ) {
     this.login = new FormControl( "",  [this.customValidator.bind(this), Validators.required, Validators.minLength(4)] )
@@ -44,16 +46,13 @@ export class SearchComponent implements OnInit {
   }
 
   onKeyPress( value: string ) {
-    if ( this.login.valid )
+    if ( this.login.valid )  {
       this.debouncer.next( value );
-  }
-
-  getErrorMessage() {
-    if ( this.login.hasError('required') ) return 'Ingresar un valor';
-    if ( this.login.hasError('minlength') ) return 'Minimo 4 caracteres';
-    if ( this.login.hasError('forbiddenValue') ) return 'Valor prohibido';
-
-    return '';
+      this.errorMessage = "";
+    }
+    if ( this.login.hasError('required') ) this.errorMessage = 'Ingresar un valor';
+    if ( this.login.hasError('minlength') ) this.errorMessage = 'Minimo 4 caracteres';
+    if ( this.login.hasError('forbiddenValue') ) this.errorMessage = 'Valor prohibido';
   }
 
 }

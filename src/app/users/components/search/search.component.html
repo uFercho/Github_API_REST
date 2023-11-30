@@ -10,6 +10,8 @@
   <mat-icon matSuffix *ngIf="login.dirty; else iconSearch">
     {{login.valid ? 'sentiment_very_satisfied' : 'sentiment_very_dissatisfied' }}
   </mat-icon>
+
   <ng-template #iconSearch> <mat-icon matSuffix >search</mat-icon> </ng-template>
-  <mat-error *ngIf="login.invalid">{{getErrorMessage()}}</mat-error>
+  <mat-error *ngIf="login.invalid">{{errorMessage}}</mat-error>
+
 </mat-form-field>

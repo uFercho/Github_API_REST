@@ -1,4 +1,3 @@
-import { PageEvent } from '@angular/material/paginator';
 
 export interface Pagination {
   prev: PaginationData;

@@ -4,7 +4,6 @@ import { Observable, tap, map, switchMap, of } from 'rxjs';
 import { UsersService } from '../services/users.service';
 import { DataUser, User } from '../interfaces/user.interface';
 import { HttpResponse } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarService } from 'src/app/shared/services/snackbar.service';
 
 @Injectable({providedIn: 'root'})
@@ -15,6 +14,7 @@ export class ProfileGuard implements CanActivate {
     private router: Router,
     private snackBarService: SnackBarService
   ) { }
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {
     const login: string = route.params['id'];
     return this.usersService.getUsers(login)
